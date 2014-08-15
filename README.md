@@ -1,4 +1,4 @@
-# estools
+# estools [![Build Status](https://travis-ci.org/saintedlama/estools.svg?branch=master)](https://travis-ci.org/saintedlama/estools) [![Coverage Status](https://coveralls.io/repos/saintedlama/estools/badge.png?branch=master)](https://coveralls.io/r/saintedlama/estools?branch=master)
 
 Estools provides a set of utility functions to traverse, filter and map esprima ASTs.
 
