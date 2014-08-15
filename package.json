@@ -1,0 +1,25 @@
+{
+  "name": "estools",
+  "description": "Provides a set of utility function to traverse, filter and map esprima ASTs",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "git://github.com/saintedlama/estools.git",
+  "author": "Christoph Walcher <christoph.walcher@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "esprima",
+    "ast"
+  ],
+  "engines": {
+    "node": ">= 0.9"
+  },
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "istanbul": "^0.3.0",
+    "mocha": "^1.21.4"
+  },
+  "scripts": {
+    "test": "mocha -R spec test/",
+    "cover": "istanbul cover ./node_modules/mocha/bin/_mocha --report html -- -R spec"
+  }
+}
