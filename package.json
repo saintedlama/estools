@@ -1,7 +1,7 @@
 {
   "name": "estools",
   "description": "Provides a set of utility function to traverse, filter and map esprima ASTs",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "main": "index.js",
   "repository": "git://github.com/saintedlama/estools.git",
   "author": "Christoph Walcher <christoph.walcher@gmail.com>",
@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "chai": "^1.9.1",
-    "istanbul": "^0.3.0",
+    "istanbul": "^0.3.2",
     "mocha": "^1.21.4"
   },
   "scripts": {

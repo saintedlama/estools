@@ -77,4 +77,38 @@ describe('pattern', function() {
     var matches = pattern({ key : function() { return false; }});
     expect(matches(obj)).to.equal(false);
   });
+
+  it('should match arrays in pattern by element', function() {
+    var obj = {
+      key : 'value'
+    };
+
+    var matches = pattern({ key : ['value'] });
+    expect(matches(obj)).to.equal(true);
+  });
+
+  it('should match arrays in pattern as OR operator', function() {
+    var obj = {
+      key : 'value'
+    };
+
+    var matches = pattern({ key : ['va', 'values', 'value'] });
+    expect(matches(obj)).to.equal(true);
+  });
+
+  it('should match arrays in pattern as OR operator against complex objects', function() {
+    var obj = {
+      key : { value : 'value', type : 'type' }
+    };
+
+    var matches = pattern({ key :
+      [
+        { value : 'va', type : 'type' },
+        { value : 'values', type : 'type' },
+        { value : 'value', type : 'type' }
+      ]
+    });
+    
+    expect(matches(obj)).to.equal(true);
+  });
 });

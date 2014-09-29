@@ -1,3 +1,5 @@
+var util = require('util');
+
 module.exports = function(pattern) {
   var matchPattern = function(object, pattern) {
     for (var key in pattern) {
@@ -10,6 +12,10 @@ module.exports = function(pattern) {
           if (!pattern[key](object[key])) {
             return false;
           }
+        } else if (util.isArray(pattern[key])) {
+          return pattern[key].some(function(item) {
+            return matchPattern(object[key], item);
+          });
         } else if (typeof pattern[key] == 'object') {
           var matches = matchPattern(object[key], pattern[key]);
 
