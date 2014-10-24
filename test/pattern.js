@@ -111,4 +111,14 @@ describe('pattern', function() {
     
     expect(matches(obj)).to.equal(true);
   });
+
+  it('should match all pattern fields', function() {
+    var obj = {
+      key : 'value',
+      value : 'value'
+    };
+
+    var matches = pattern({ key : ['value'], value: 'none' });
+    expect(matches(obj)).to.equal(false);
+  });
 });

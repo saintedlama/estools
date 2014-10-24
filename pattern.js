@@ -13,9 +13,13 @@ module.exports = function(pattern) {
             return false;
           }
         } else if (util.isArray(pattern[key])) {
-          return pattern[key].some(function(item) {
+          var matches = pattern[key].some(function(item) {
             return matchPattern(object[key], item);
           });
+
+          if (!matches) {
+            return false;
+          }
         } else if (typeof pattern[key] == 'object') {
           var matches = matchPattern(object[key], pattern[key]);
 
