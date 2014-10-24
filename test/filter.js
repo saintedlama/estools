@@ -46,4 +46,40 @@ describe('filter', function() {
     var nodes = filter(ast, { child : { key : 'value' }});
     expect(nodes.length).to.equal(1);
   });
+
+  it('should match child properties against array length field', function() {
+    var ast = {
+      type : 'Program',
+      key : 'value1',
+      names : ['a', 'b', 'c']
+    };
+
+    var nodes = filter(ast, {
+      names : {
+        length : function(val) {
+          return val > 1;
+        }
+      }
+    });
+
+    expect(nodes.length).to.equal(1);
+  });
+
+  it('should not match non matching array length predicates', function() {
+    var ast = {
+      type : 'Program',
+      key : 'value1',
+      names : ['a', 'b', 'c']
+    };
+
+    var nodes = filter(ast, {
+      names : {
+        length : function(val) {
+          return val > 3;
+        }
+      }
+    });
+
+    expect(nodes.length).to.equal(0);
+  });
 });
