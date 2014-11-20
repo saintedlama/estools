@@ -82,4 +82,63 @@ describe('filter', function() {
 
     expect(nodes.length).to.equal(0);
   });
+
+  it('should apply projections to matching nodes', function() {
+    var ast = {
+      type : 'Program',
+      key : 'value',
+      child : {
+        type : 'CallExpression',
+        key : 'value'
+      }
+    };
+
+    var nodes = filter(ast, {
+      type :'CallExpression'
+    });
+
+
+    var nodes = filter(ast, {
+      type :'CallExpression'
+    },{
+      projection : function(node, parent) {
+        expect(node).to.exist;
+        expect(parent).to.exist;
+
+        return 'projected'
+      }
+    });
+
+    expect(nodes.length).to.equal(1);
+    expect(nodes[0]).to.equal('projected');
+  });
+
+  it('should not add non projected nodes to matching nodes', function() {
+    var ast = {
+      type : 'Program',
+      key : 'value',
+      child : {
+        type : 'CallExpression',
+        key : 'value'
+      }
+    };
+
+    var nodes = filter(ast, {
+      type :'CallExpression'
+    });
+
+
+    var nodes = filter(ast, {
+      type :'CallExpression'
+    },{
+      projection : function(node, parent) {
+        expect(node).to.exist;
+        expect(parent).to.exist;
+
+        return;
+      }
+    });
+
+    expect(nodes.length).to.equal(0);
+  });
 });
