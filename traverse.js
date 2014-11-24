@@ -6,6 +6,10 @@ var isAstNode = function(node, nodeName) {
 };
 
 var traverse = function(node, parent, visitor) {
+  if (!node) {
+    return;
+  }
+
   // Only visit ast node properties
   if (!isAstNode(node)) {
     return;

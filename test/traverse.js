@@ -248,7 +248,6 @@ describe('traverse', function() {
     expect(visitorCalled++).to.equal(0); // No ast nodes to visit!
   });
 
-
   it('should skip child nodes if next is not called by visit', function() {
     var ast = {
       type : 'Program',
@@ -266,5 +265,18 @@ describe('traverse', function() {
     });
 
     expect(called).to.equal(1);
+  });
+
+  it('should not throw for undefined nodes', function() {
+    var called = 0;
+
+    traverse(undefined, {
+      visit : function(node) {
+        called++;
+        return node;
+      }
+    });
+
+    expect(called).to.equal(0);
   });
 });
