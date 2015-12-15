@@ -14,9 +14,11 @@
     "node": ">= 0.9"
   },
   "devDependencies": {
-    "chai": "^1.9.1",
-    "istanbul": "^0.3.2",
-    "mocha": "^1.21.4"
+    "chai": "^3.4.1",
+    "espree": "^2.2.5",
+    "istanbul": "^0.4.1",
+    "mocha": "^2.3.4",
+    "shelljs": "^0.5.3"
   },
   "scripts": {
     "test": "mocha -R spec test/",

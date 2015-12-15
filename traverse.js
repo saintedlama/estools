@@ -22,6 +22,10 @@ var traverse = function(node, parent, visitor) {
       if (node.hasOwnProperty(key)) {
         var child = node[key];
 
+        if (key == 'tokens' || key == 'range' || key == 'comments') {
+          continue;
+        }
+
         if (typeof child === 'object' && isAstNode(child, key)) {
           traverse(child, node, visitor);
         } else if (util.isArray(child)) {
